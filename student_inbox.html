@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inbox</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="top-menu">
+        <ul>
+            <li><a href="{{ url_for('student_home') }}" class="menu-link">Home</a></li>
+            <li><a href="{{ url_for('student_scholarships') }}" class="menu-link">View Scholarships</a></li>
+            <li><a href="{{ url_for('student_inbox') }}" class="menu-link">Inbox</a></li>
+            <li><a href="{{ url_for('student_announcements') }}" class="nav-link">View Announcements</a></li>
+            <li><a href="{{ url_for('student_messages') }}">Message Financial Aid Admin</a></li>
+            <li><a href="{{ url_for('profile') }}" class="menu-link">Profile</a></li>
+            <li><a href="{{ url_for('logout') }}" class="menu-link">Logout</a></li>
+        </ul>
+    </div>
+
+    <!-- Inbox Content -->
+    <div class="inbox-container">
+        <h2>Inbox</h2>
+        {% if messages %}
+            <ul class="message-list">
+                {% for message in messages %}
+                    <li class="message-item">
+                        <p class="message-content">{{ message.content }}</p>
+                        <p class="message-sent-at">Sent at: {{ message.sent_at }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No messages yet.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,297 @@
+/* General page layout */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+/* Admin navigation bar */
+nav {
+    background-color: #333;
+    padding: 10px;
+    color: white;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Admin content container */
+.admin-container {
+    margin: 20px;
+}
+
+h2 {
+    color: #333;
+}
+
+h3 {
+    color: #555;
+}
+
+/* Table styles for student data */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+.student-actions {
+    margin-top: 10px;
+    clear: both; /* Ensure no overlapping */
+}
+
+/* Buttons for accepting or denying applications */
+.accept-btn, .deny-btn {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #4CAF50; /* Green for accept */
+    color: white;
+    border-radius: 5px;
+    margin-right: 10px;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 10px; /* Ensure buttons are spaced */
+}
+
+.deny-btn {
+    background-color: #f44336; /* Red for deny */
+}
+
+.accept-btn:hover {
+    background-color: #45a049;
+}
+
+.deny-btn:hover {
+    background-color: #e53935;
+}
+
+/* Form Styles for Adding Scholarships or Editing Students */
+form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+input[type="text"], input[type="email"], input[type="number"], input[type="password"], select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="submit"], button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover, button:hover {
+    background-color: #0056b3;
+}
+
+/* Links inside the form */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    /* Stack navigation links vertically on small screens */
+    nav ul {
+        text-align: left;
+    }
+
+    nav ul li {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .accept-btn, .deny-btn {
+        width: 100%; /* Make action buttons full-width on small screens */
+        margin-top: 10px;
+    }
+
+    .admin-container {
+        margin: 10px;
+    }
+
+    form {
+        padding: 15px;
+    }
+}
+.scholarships-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.scholarship-item {
+    background: white;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between; /* Aligns name & button */
+    align-items: center;
+    gap: 10px; /* Adds space between elements */
+    flex-wrap: wrap; /* Ensures proper wrapping */
+}
+
+.scholarship-name {
+    font-weight: bold;
+    flex: 1; /* Allows text to take available space */
+    min-width: 150px;
+}
+
+.scholarship-description {
+    flex: 2;
+    min-width: 200px;
+}
+
+.btn-delete {
+    background: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    min-width: 80px; /* Ensures buttons don’t shrink */
+    text-align: center;
+}
+
+.btn-delete:hover {
+    background: darkred;
+}
+.delete-btn {
+    color: darkred;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.delete-btn:hover {
+    background-color: white;
+}
+
+/* Message Page Container */
+.container {
+    width: 50%;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Messages Section */
+.messages {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #f9f9f9;
+    margin-bottom: 20px;
+}
+
+/* Sent Messages (Student) */
+.message-sent {
+    background: #d1e7ff;
+    color: black;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 70%;
+    margin-left: auto;
+    margin-bottom: 10px;
+    text-align: right;
+}
+
+/* Received Messages (Admin) */
+.message-received {
+    background: #e2e2e2;
+    color: black;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 70%;
+    margin-right: auto;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+/* Message Input Form */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    resize: none;
+}
+
+button {
+    background: #0044cc;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0033aa;
+}
+

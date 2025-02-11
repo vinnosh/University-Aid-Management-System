@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages - Financial Aid</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="top-menu">
+        <ul>
+            <li><a href="{{ url_for('student_home') }}" class="menu-link">Home</a></li>
+            <li><a href="{{ url_for('student_scholarships') }}" class="menu-link">View Scholarships</a></li>
+            <li><a href="{{ url_for('student_inbox') }}" class="menu-link">Inbox</a></li>
+            <li><a href="{{ url_for('student_announcements') }}" class="nav-link">View Announcements</a></li>
+            <li><a href="{{ url_for('student_messages') }}">Message Financial Aid Admin</a></li>
+            <li><a href="{{ url_for('profile') }}" class="menu-link">Profile</a></li>
+            <li><a href="{{ url_for('logout') }}" class="menu-link">Logout</a></li>
+        </ul>
+    </div>
+    <div class="container">
+        <h2>Messages with Financial Aid Admin</h2>
+
+        <div class="messages">
+            {% for message in messages %}
+                <div class="{% if message.sender_id == session['student_id'] %}message-sent{% else %}message-received{% endif %}">
+                    <p>{{ message.content }}</p>
+                    <small>{{ message.timestamp.strftime('%Y-%m-%d %H:%M') }}</small>
+                </div>
+            {% endfor %}
+        </div>
+
+        <form method="POST">
+            <textarea name="content" rows="4" placeholder="Type your message..." required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+</body>
+</html>

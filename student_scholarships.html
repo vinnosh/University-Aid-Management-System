@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student - Scholarships</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="top-menu">
+        <ul>
+            <li><a href="{{ url_for('student_home') }}" class="menu-link">Home</a></li>
+            <li><a href="{{ url_for('student_scholarships') }}" class="menu-link">View Scholarships</a></li>
+            <li><a href="{{ url_for('student_inbox') }}" class="menu-link">Inbox</a></li>
+            <li><a href="{{ url_for('student_announcements') }}" class="nav-link">View Announcements</a></li>
+            <li><a href="{{ url_for('student_messages') }}">Message Financial Aid Admin</a></li>
+            <li><a href="{{ url_for('profile') }}" class="menu-link">Profile</a></li>
+            <li><a href="{{ url_for('logout') }}" class="menu-link">Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="student-container">
+    <h2>Available Scholarships</h2>
+
+    {% if scholarships %}
+        <ul>
+            {% for scholarship in scholarships %}
+                <li>
+                    <h3>{{ scholarship.name }}</h3>
+                    <p>{{ scholarship.description }}</p>
+                    <p>GPA Requirement: {{ scholarship.criteria_gpa }}</p>
+
+                    {% if scholarship.scholarship_id in applied_scholarships %}
+                        <button class="applied-btn" disabled>Applied</button>
+                    {% else %}
+                        <form method="POST" action="{{ url_for('apply_scholarship', scholarship_id=scholarship.scholarship_id) }}">
+                            <button type="submit" class="apply-btn">Apply</button>
+                        </form>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No scholarships available at the moment.</p>
+    {% endif %}
+</div>
+
+</body>
+</html>

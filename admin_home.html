@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin_styles.css') }}">
+</head>
+<body>
+    <div class="admin-container">
+        <nav class="admin-nav">
+            <ul>
+                <li><a href="{{ url_for('admin_home') }}" class="nav-link">Dashboard</a></li>
+                <li><a href="{{ url_for('admin_view_students') }}" class="nav-link">View Students</a></li>
+                <li><a href="{{ url_for('admin_view_applications') }}" class="nav-link">View Applications</a></li>
+                <li><a href="{{ url_for('add_scholarship') }}" class="nav-link">Add Scholarship</a></li>
+                <li><a href="{{ url_for('admin_announcement') }}" class="nav-link">Post Announcement</a></li>
+                <li><a href="{{ url_for('logout') }}" class="nav-link">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+
+        <!-- Main content for the admin page -->
+        <div class="admin-main-content">
+            <h2>Welcome to the Admin Dashboard</h2>
+            <p>Use the menu above to navigate and manage the platform.</p>
+            <p>From here, you can add new scholarships, view students, and manage applications.</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Edit Student</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin_styles.css') }}">
+</head>
+<body>
+    <div class="admin-container">
+        <nav class="admin-nav">
+            <ul>
+                <li><a href="{{ url_for('admin_home') }}" class="nav-link">Dashboard</a></li>
+                <li><a href="{{ url_for('admin_view_students') }}" class="nav-link">View Students</a></li>
+                <li><a href="{{ url_for('admin_view_applications') }}" class="nav-link">View Applications</a></li>
+                <li><a href="{{ url_for('add_scholarship') }}" class="nav-link">Add Scholarship</a></li>
+                <li><a href="{{ url_for('admin_announcement') }}" class="nav-link">Post Announcement</a></li>
+                <li><a href="{{ url_for('logout') }}" class="nav-link">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="container">
+        <h2>Edit Student - {{ student.name }}</h2>
+        <form action="{{ url_for('admin_change_student', student_id=student.student_id) }}" method="POST">
+            <label for="gpa">GPA</label>
+            <input type="number" step="0.01" id="gpa" name="gpa" value="{{ student.gpa }}" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter new password">
+
+            <input type="submit" value="Save Changes">
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Funds - Finance Department</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin_styles.css') }}">
+</head>
+<body>
+    <div class="admin-container">
+        <nav class="admin-nav">
+            <ul>
+                <li><a href="{{ url_for('finance_home') }}" class="nav-link">Dashboard</a></li>
+                <li><a href="{{ url_for('track_funds') }}" class="nav-link active">Track Fund Allocations</a></li>
+                <li><a href="{{ url_for('financial_aid_allocate') }}" class="nav-link">Allocate Funds</a></li>
+                <li><a href="{{ url_for('logout') }}" class="nav-link">Logout</a></li>
+            </ul>
+        </nav>
+
+        <h2>Track Available Funds</h2>
+
+        <form action="{{ url_for('track_funds') }}" method="POST">
+            <div class="form-group">
+                <label for="available_funds">Enter Available Funds:</label>
+                <input type="number" name="available_funds" id="available_funds" step="0.01" min="0" required>
+                <button type="submit" class="btn">Set Funds</button>
+            </div>
+        </form>
+
+        <h3>Available Funds: RM{{ available_funds }}</h3>
+
+        <h3>Scholarship Fund Allocations</h3>
+        <table border="1">
+            <tr>
+                <th>Student Name</th>
+                <th>Scholarship</th>
+                <th>Funds Needed</th>
+                <th>Allocated Funds</th>
+            </tr>
+            {% for allocation in fund_allocations %}
+                <tr>
+                    <td>{{ allocation.student.name }}</td>
+                    <td>{{ allocation.scholarship.name }}</td>
+                    <td>{{ allocation.scholarship.funds_needed }}</td>
+                    <td>RM{{ allocation.amount_allocated }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+
+        <!-- Download Financial Report Link -->
+        <br>
+        <a href="{{ url_for('download_financial_report') }}" class="btn">Download Financial Report</a>
+    </div>
+</body>
+</html>

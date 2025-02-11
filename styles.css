@@ -1,0 +1,261 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation Menu */
+.top-menu {
+    background-color: #333;
+    padding: 10px;
+    text-align: center;
+}
+
+.top-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.top-menu ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+.top-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.top-menu a:hover {
+    color: #4CAF50;
+}
+
+/* Admin Navigation */
+.admin-nav ul {
+    list-style: none;
+    padding: 0;
+    background: #333;
+    text-align: center;
+}
+
+.admin-nav ul li {
+    display: inline;
+    padding: 10px;
+}
+
+.admin-nav ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px;
+    display: inline-block;
+}
+
+.admin-nav ul li a:hover,
+.admin-nav ul li a.active {
+    background: #555;
+}
+
+/* Admin Container */
+.admin-container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Add Scholarship Form */
+.add-scholarship-form {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #f9f9f9;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn {
+    background: green;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background: darkgreen;
+}
+
+/* Scholarships List */
+.scholarships-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.scholarship-item {
+    background: white;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.scholarship-name {
+    font-weight: bold;
+}
+
+.scholarship-gpa {
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* Delete Button */
+.btn-delete {
+    background: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn-delete:hover {
+    background: darkred;
+}
+
+/* Inbox Styles */
+.inbox-container {
+    width: 80%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.inbox-container h2 {
+    text-align: center;
+    color: #333;
+}
+
+.message-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.message-item {
+    padding: 15px;
+    background-color: #f8f8f8;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.message-content {
+    font-size: 1.1em;
+    color: #333;
+}
+
+.message-sent-at {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 5px;
+}
+
+.message-item:hover {
+    background-color: #e9e9e9;
+    cursor: pointer;
+}
+.applied-btn {
+    background-color: grey;
+    color: white;
+    cursor: not-allowed;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.apply-btn {
+    background-color: green;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.apply-btn:hover {
+    background-color: darkgreen;
+}
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.messages {
+    border: 1px solid #ddd;
+    padding: 10px;
+    height: 300px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+
+.message-sent {
+    background-color: #d1e7fd;
+    text-align: right;
+    padding: 8px;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+
+.message-received {
+    background-color: #f0f0f0;
+    text-align: left;
+    padding: 8px;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

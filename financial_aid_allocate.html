@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="pragma" content="no-cache">
+
+    <title>Financial Aid Allocation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin_styles.css') }}">
+</head>
+<body>
+    <div class="admin-container">
+        <nav class="admin-nav">
+            <ul>
+                {% if session['role'] == 'financial_aid_admin' %}
+                    <li><a href="{{ url_for('financial_aid_home') }}" class="nav-link">Dashboard</a></li>
+                     <li><a href="{{ url_for('financial_aid_view_applications') }}" class="nav-link">View Applications</a></li>
+                    <li><a href="{{ url_for('financial_aid_allocate') }}" class="nav-link">Allocate Funds</a></li>
+                    <li><a href="{{ url_for('financial_aid_messages') }}">Financial Aid Inbox</a></li>
+                {% elif session['role'] == 'finance_department' %}
+                    <li><a href="{{ url_for('finance_home') }}" class="nav-link">Dashboard</a></li>
+                    <li><a href="{{ url_for('track_funds') }}" class="nav-link active">Track Fund Allocations</a></li>
+                    <li><a href="{{ url_for('financial_aid_allocate') }}" class="nav-link">Allocate Funds</a></li>
+                {% endif %}
+
+                <li><a href="{{ url_for('logout') }}" class="nav-link">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    {% if session['role'] == 'financial_aid_admin' %}
+    <h2>Allocate Funds for Approved Students</h2>
+    {% endif %}
+
+    {% if session['role'] == 'finance_department' %}
+    <h2>Funds That Have Been Allocated for Approved Students</h2>
+    {% endif %}
+    <table border="1">
+        <tr>
+            <th>Student Name</th>
+            <th>Scholarship</th>
+            <th>Funds Needed (RM)</th>
+            <th>Allocated Funds</th>
+            {% if session['role'] == 'financial_aid_admin' %}
+                <th>Allocate Funds</th>
+            {% endif %}
+        </tr>
+        {% for application in applications %}
+            <tr>
+                <td>{{ application.student.name }}</td>
+                <td>{{ application.scholarship.name }}</td>
+                <td>{{ application.scholarship.funds_needed }}</td>
+                <td>
+    {% set total_allocated = namespace(value=0) %}
+    {% for allocation in application.student.fund_allocations %}
+        {% if allocation.scholarship_id == application.scholarship.scholarship_id %}
+            {% set total_allocated.value = total_allocated.value + allocation.amount_allocated %}
+            <!-- Debug: Display each allocation -->
+            <p>Allocated: {{ allocation.amount_allocated }}</p>
+        {% endif %}
+    {% endfor %}
+
+    {% if total_allocated.value > 0 %}
+        RM{{ total_allocated.value }}
+    {% else %}
+        RM0
+    {% endif %}
+</td>
+                {% if session['role'] == 'financial_aid_admin' %}
+                    <td>
+                        <form action="{{ url_for('allocate_funds', application_id=application.application_id) }}" method="POST">
+                            {% set remaining_funds = application.scholarship.funds_needed - total_allocated.value %}
+
+                            <input type="number" name="allocated_funds" step="0.01" min="0" max="{{ remaining_funds }}"{% if remaining_funds <= 0 %} disabled {% endif %}required>
+                            <button type="submit" {% if remaining_funds <= 0 %} disabled {% endif %}>Allocate</button>
+                        </form>
+
+                    </td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

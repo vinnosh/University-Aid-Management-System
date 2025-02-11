@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+</head>
+<body>
+
+
+    <div class="container">
+        <h2>Register</h2>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="flash-messages">
+            {% for category, message in messages %}
+                <p class="flash {{ category }}">{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+<style>
+    .flash-messages {
+        background-color: #ffcccc;
+        color: red;
+        padding: 10px;
+        text-align: center;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+</style>
+
+        <form method="POST" action="{{ url_for('register') }}">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="gpa">GPA</label>
+            <input type="number" id="gpa" name="gpa" placeholder="Enter your GPA" step="0.1" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+            <input type="submit" value="Register">
+
+            <div class="form-links">
+                <p>Already have an account? <a href="{{ url_for('login_page') }}">Login here</a></p>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

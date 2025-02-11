@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Aid Admin - Manage Applications</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin_styles.css') }}">
+</head>
+<body>
+    <div class="admin-container">
+        <nav class="admin-nav">
+            <ul>
+                <li><a href="{{ url_for('financial_aid_home') }}" class="nav-link">Dashboard</a></li>
+                <li><a href="{{ url_for('financial_aid_view_applications') }}" class="nav-link">View Applications</a></li>
+                <li><a href="{{ url_for('financial_aid_allocate') }}" class="nav-link">Allocate Funds</a></li>
+                <li><a href="{{ url_for('financial_aid_messages') }}">Financial Aid Inbox</a></li>
+                <li><a href="{{ url_for('logout') }}" class="nav-link">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="applications-container">
+        <h2>Review Applications</h2>
+
+        <table class="applications-table">
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Scholarship</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for application in applications %}
+                <tr>
+                    <td>{{ application.student.name }}</td>
+                    <td>{{ application.scholarship.name }}</td>
+                    <td>{{ application.status }}</td>
+                    <td>
+                        <a href="{{ url_for('financial_aid_handle_application', application_id=application.application_id, action='accept') }}" class="btn accept-btn">Accept</a>
+                        <a href="{{ url_for('financial_aid_handle_application', application_id=application.application_id, action='deny') }}" class="btn deny-btn">Deny</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+

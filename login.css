@@ -1,0 +1,99 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Apply a background color and center the content */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+    .flash-messages {
+        background-color: #ffcccc;
+        color: red;
+        padding: 10px;
+        text-align: center;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+
+/* Form styles */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Label styles */
+label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+/* Input styles */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input[type="submit"] {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Links */
+.form-links {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.form-links a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.form-links a:hover {
+    text-decoration: underline;
+}
+
+/* Ensure the form doesn't overflow */
+.container {
+    overflow: hidden;
+}
